@@ -1,44 +1,63 @@
 description = "Default layout"
 ==
-function onStart() {
-    $cssFiles = [
-        'assets/less/theme.less'
-    ];
-    
-    $jsFiles = [
-        'assets/vendor/jquery.js',
-        'assets/javascript/app.js'
-    ];
-    
-    $this->addCss($cssFiles);
-    $this->addJs($jsFiles);
-    
+<?php
+function onStart()
+{
+    // $this['staticContentTs'] = Config::get('telekod.staticinlinecontent::staticContentTs');
+
+    $defaultOnStartScript = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR 
+        . 'themes' . DIRECTORY_SEPARATOR 
+        . Config::get("cms.activeTheme",'') . DIRECTORY_SEPARATOR 
+        . 'layouts' . DIRECTORY_SEPARATOR 
+        . 'defaultOnStart.php';
+    require_once $defaultOnStartScript;
 }
 
+function onEnd()
+{
+    $defaultOnEndScript = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR 
+        . 'themes' . DIRECTORY_SEPARATOR 
+        . Config::get("cms.activeTheme",'') . DIRECTORY_SEPARATOR 
+        . 'layouts' . DIRECTORY_SEPARATOR 
+        . 'defaultOnEnd.php';
+    require_once $defaultOnEndScript;
+}
+?>
 ==
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>October CMS - {{ this.page.title }}</title>
-        <meta name="description" content="{{ this.page.meta_description }}">
-        <meta name="title" content="{{ this.page.meta_title }}">
-        <meta name="author" content="OctoberCMS">
+        <meta name="format-detection" content="telephone=no"> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>{{ this.page.title }}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="generator" content="OctoberCMS">
-        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
-        {# <link href="{{ ['assets/less/theme.less']|theme }}" rel="stylesheet"> #}
+        <base href="{{ url('/') }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        {% if this.page.id != '404' %}
+        <meta name="description" content="{{ this.page.meta_description }}">
+        {% endif %}
+        <link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+        <link rel="stylesheet" href="{{ cssFiles|theme }}">
         {% styles %}
+        <script type="text/javascript" src="{{ ['assets/vendor/jquery.js']|theme }}"></script>
     </head>
     <body>
+
+        <!-- Header -->
         {% partial 'header' %}
+
+        <!-- Content -->
         {% page %}
+
+        <!-- Footer -->
         {% partial 'footer' %}
 
         <!-- Scripts -->
-        {# <script src="{{ ['assets/vendor/jquery.js', 'assets/javascript/app.js']|theme }}"></script> #}
-        {% framework extras %}
-        {% scripts %}
+        <script type="text/javascript" src="{{ jsBodyFiles|theme }}"{% if (ieVersion > 9) or (ieVersion is empty) %} defer{% endif %}></script>
+        {# <script type="text/javascript" src="{{ url('/') }}/inline-js-body-{{ staticContentTs }}"{% if (ieVersion > 9) or (ieVersion is empty) %} defer{% endif %}></script> #}
+
+        {% scripts %} 
 
     </body>
 </html>

@@ -1,33 +1,30 @@
-//
-// Boot theme
-//
-
+/******************************* Boot *****************************************/
 @import "theme/boot";
+/******************************************************************************/
 
-//
-// Fonts
-//
+/******************************* Vendor ***************************************/
+// @import "theme/vendor";
+/******************************************************************************/
 
+/******************************* Fonts ****************************************/
 @import "theme/fonts";
+/******************************************************************************/
 
-//
-// Controls
-//
-// These are interactive controls used in the site.
-//
+/******************************* Variables ************************************/
 
-@import "controls/example";
-@import "vendor.less";
-//
-// Elements
-//
-// These are reusable elements used in the site.
-//
+@defaultFontIE: 'OpenSansIE', sans-serif;
+@link-color: #f0b105;
+@secondary-background: #fcfcfc;
+@footer-link-color: #e0ecf8;
+/******************************************************************************/
 
-@import "elements/callouts";
-@import "elements/utilities";
-@import "elements/navbar";
-
-body {
-    background-color: #000;
+/******************************* Application styles ***************************/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    body, .container p, h1, h2, h3, h4, ul, li { 
+        font-family: @defaultFontIE;
+    }
 }
+/******************************************************************************/
+
+/************************** Responsive media queries **************************/
+/******************************************************************************/
