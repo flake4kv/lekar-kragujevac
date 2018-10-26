@@ -7,7 +7,11 @@
 /******************************************************************************/
 
 /******************************* Variables ************************************/
-@defaultFontIE: 'OpenSansIE', sans-serif;
+@defaultFontIE:      'OpenSansIE', sans-serif;
+@transitionDuration: 0.5s;
+@thin-border:        1px solid #ccc;
+@main-color:         #900000;
+@font-color:         #3b3b3b;
 /******************************************************************************/
 
 /******************************* Application styles ***************************/
@@ -22,9 +26,58 @@
     margin: auto;
     padding: 0 0.5rem;
 }
+.clearfix { clear: both; }
 /********************************** Header ************************************/
-.inline-list li { display: inline-block; }
+header,
+.header-info-wrapper {
+    border-bottom: @thin-border;
+    color: @font-color;
+}
+header ul, header ul li { margin: 0; }
+.inline-list li { 
+    display: block;
+    float: left;
+}
+.header-info-wrapper .inline-list li { 
+    float: none;
+    display: inline-block;
+}
+.navigation-wrapper { float: right; }
+.navigation a { 
+    color: @font-color;
+    padding: 0.5rem;
+    display: inline-block;
+    transition: @transitionDuration;
+    border-left: @thin-border;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+.navigation li:last-child a { border-right: @thin-border; }
+.logo-wrapper { float: left; }
+.logo-wrapper .logo img { width: 60px; }
+.navigation a:hover { 
+    background-color: @main-color;
+    color: #fff;
+}
+.header-info { 
+    text-align: center;
+    padding: 0.25rem 0;
+}
+.header-info img { width: 25px; }
+.header-info a { 
+    color: @font-color;
+    padding: 0 0.25rem;
+    font-size: 0.8rem;
+}
+.header-info a:hover {
+    color: @main-color;
+    opacity: 0.7;
+    transition: @transitionDuration;
+} 
+.header-info
+.icon-margin img{ margin-right: 0.3rem; }
 /******************************************************************************/
+
 /******************************************************************************/
 
 /************************** Responsive media queries **************************/
