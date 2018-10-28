@@ -54,7 +54,7 @@ body, .container p, h1, h2, h3, h4, ul, li { font-family: @defaultFont; }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     body, .container p, h1, h2, h3, h4, ul, li { font-family: @defaultFontIE; }
 }
-h1, h2, h3 { 
+h1 { 
     text-transform: uppercase;
     font-weight: @titleWeight;
     color: @lightColor;
@@ -69,8 +69,19 @@ h1 {
     font-size: @h1DesktopSize;
     margin: 0;
 }
-h2 { font-size: @h2DesktopSize; }
+h2 { 
+    font-size: @h2DesktopSize;
+    text-transform: uppercase;
+    color: @main-color;
+    font-weight: @titleWeight;
+    margin: 1rem 0;
+    width: 100px;
+    border-bottom: 3px solid @main-color;
+}
 h3 { font-size: @h3DesktopSize; }
+h2 {  
+    color: @font-color;
+}
 .desktop-left { text-align: left; }
 .desktop-right { text-align: right; }
 .footer-image-padding { margin-top: 1rem; } 
