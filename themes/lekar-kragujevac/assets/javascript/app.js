@@ -41,6 +41,22 @@ App = {
    */
   // staticContentTs: '1501069777',
 
+    // Homepage slider settings.
+    mainSliderSettings: {
+        autoPlay: 7000,
+        slideSpeed: 500,
+        mouseDrag: true,
+        touchDrag: true,
+        navigationText: false,
+        navigation: true,
+        singleItem: true,
+        stopOnHover: true,
+        lazyLoad: true,
+        loop: true,
+        rewindNav : true,
+        rewindSpeed: 0
+    },
+
   /**
    * Initializing App.
    */
@@ -50,7 +66,44 @@ App = {
       if (App.debug) {
         console.log("[App] Application's main entry point.");
       }
+      App.Slider._init();
     });
     
+  },
+
+  /**
+   * It contains methods related with Slider method.
+   * 
+   * @author Stevan Andrić
+   */  
+  Slider: {
+    _init: function () { 
+        console.log('Slider');
+        App.Slider.homepageSlider();
+    },
+
+    /**
+     * It handles homepage slider.
+     * 
+     * @author Stevan Andrić
+     */
+    homepageSlider() {
+        $('.owl-wrapper').owlCarousel({
+          autoPlay: 7000,
+          slideSpeed: 500,
+          mouseDrag: true,
+          touchDrag: true,
+          navigationText: false,
+          navigation: true,
+          singleItem: true,
+          stopOnHover: true,
+          lazyLoad: true,
+          loop: true,
+          rewindNav : true,
+          rewindSpeed: 0
+        });   
+    }
   }
 };
+
+App._init();

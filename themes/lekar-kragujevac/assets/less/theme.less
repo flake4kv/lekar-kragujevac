@@ -7,18 +7,57 @@
 /******************************************************************************/
 
 /******************************* Variables ************************************/
+
+/******************************* Fonts ****************************************/
+@defaultFont:        'Montserrat', sans-serif;
 @defaultFontIE:      'OpenSansIE', sans-serif;
+/******************************************************************************/
+
+/**************************** Transitions and effects *************************/
 @transitionDuration: 0.5s;
+/******************************************************************************/
+
+/************************************ Borders *********************************/
 @thin-border:        1px solid #ccc;
+/******************************************************************************/
+
+/************************************* Colors *********************************/
 @main-color:         #900000;
-@font-color:         #3b3b3b;
+@font-color:         #666;
+@lightColor:         #eee;
+/******************************************************************************/
+
+/********************************** Font weights ******************************/
+@header-info-weight: 400;
+@titleWeight:        600;
+@navigation-weight:  600;
+/******************************************************************************/
+
+/******************************** Paragraf size *******************************/
+@paragrafSize:       0.9rem;
+/******************************************************************************/
+
+/************************ Headings on desktop devices *************************/
+@h1DesktopSize:      1.3rem;
+@h2DesktopSize:      1.2rem;
+@h3DesktopSize:      1.1rem;
+/******************************************************************************/
+
+/************************* Headings on mobile devices *************************/
+@h1MobileSize:       1.0rem;
+@h2DesktopSize:      0.9rem;
+@h3DesktopSize:      0.8rem;
 /******************************************************************************/
 
 /******************************* Application styles ***************************/
+body, .container p, h1, h2, h3, h4, ul, li { font-family: @defaultFont; }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    body, .container p, h1, h2, h3, h4, ul, li { 
-        font-family: @defaultFontIE;
-    }
+    body, .container p, h1, h2, h3, h4, ul, li { font-family: @defaultFontIE; }
+}
+h1, h2, h3 { 
+    text-transform: uppercase;
+    font-weight: @titleWeight;
+    color: @lightColor;
 }
 .page-wrapper {
     width: 100%;
@@ -26,10 +65,17 @@
     margin: auto;
     padding: 0 0.5rem;
 }
-.clearfix { clear: both; }
+h1 { 
+    font-size: @h1DesktopSize;
+    margin: 0;
+}
+h2 { font-size: @h2DesktopSize; }
+h3 { font-size: @h3DesktopSize; }
+.desktop-left { text-align: left; }
+.desktop-right { text-align: right; }
+.footer-image-padding { margin-top: 1rem; } 
 /********************************** Header ************************************/
-header,
-.header-info-wrapper {
+header, .header-info-wrapper {
     border-bottom: @thin-border;
     color: @font-color;
 }
@@ -45,19 +91,27 @@ header ul, header ul li { margin: 0; }
 .navigation-wrapper { float: right; }
 .navigation a { 
     color: @font-color;
-    padding: 0.5rem;
+    padding: 0.75rem;
     display: inline-block;
     transition: @transitionDuration;
     border-left: @thin-border;
     font-size: 0.75rem;
     text-transform: uppercase;
+    font-weight: @navigation-weight;
 }
 .navigation li:last-child a { border-right: @thin-border; }
 .logo-wrapper { float: left; }
-.logo-wrapper .logo img { width: 60px; }
-.navigation a:hover { 
+.logo-wrapper .logo img { width: 45px; }
+.logo-wrapper a span { 
+    color: @font-color;
+    font-weight: @navigation-weight;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+.navigation a:hover,
+.navigation li a.active { 
     background-color: @main-color;
-    color: #fff;
+    color: @lightColor;
 }
 .header-info { 
     text-align: center;
@@ -68,6 +122,7 @@ header ul, header ul li { margin: 0; }
     color: @font-color;
     padding: 0 0.25rem;
     font-size: 0.8rem;
+    font-weight: @header-info-weight;
 }
 .header-info a:hover {
     color: @main-color;
@@ -78,6 +133,123 @@ header ul, header ul li { margin: 0; }
 .icon-margin img{ margin-right: 0.3rem; }
 /******************************************************************************/
 
+/********************************** Owl carousel ******************************/
+.owl-prev,
+.owl-next {
+    opacity: 0.4;
+    color: @lightColor;
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    // background-color: @main-color;
+    background-image: none;
+    transition: 0.3s;
+    -webkit-transition: 0.3s; /* Safari */
+}
+.owl-prev { left: 0.5rem; }
+.owl-next { right: 0.5rem; }
+.owl-prev::after {    
+    font-family: FontAwesome;
+    content: '\f053';
+    padding-left: 0.65rem;
+    vertical-align: middle;
+    padding-bottom: 0.2rem;
+}
+.owl-next::after {
+    font-family: FontAwesome;
+    content: '\f054';
+    padding-left: 1rem;
+    vertical-align: middle;
+    padding-bottom: 0.2rem;
+}
+.owl-prev:hover { 
+    margin-left: 0px;
+    opacity: 1;   
+    width: 50px;
+}
+.owl-next:hover {
+    margin-right: 0px;
+    opacity: 1;   
+    width: 50px;
+}
+.owl-pagination .owl-page { 
+    background-color: @lightColor;
+    border: 1px solid @lightColor;
+    border-radius: 4px;
+    opacity: 0.4;
+    border-radius: 0;
+    width: 10px;
+    height: 10px;
+    vertical-align: middle;
+    /* padding: 0.25rem; */
+    margin: 0.25rem 0.3rem;
+    transition: 0.3s;
+    -webkit-transition: 0.3s; /* Safari */
+}
+.owl-pagination .owl-page:hover { opacity: 1; } 
+.owl-pagination .owl-page.active{
+    opacity: 1;
+    width: 15px;
+    height: 15px;
+    background-color: transparent;
+    border: 1px solid @lightColor;
+    border-radius: 4px;
+}
+.owl-pagination { 
+    bottom: 0;
+    height: 30px
+}
+/******************************************************************************/
+
+/******************************* Page title ***********************************/
+.page-title-wrapper {
+    width: 100%;
+    background-color: @main-color;
+    padding: 1rem 0;
+}
+/******************************************************************************/
+
+/********************************* Footer *************************************/
+footer { border-top: @thin-border; }
+.copyright-wrapper { 
+    background-color: rgba(0, 0, 0, 0.8);
+    color: @lightColor;
+    font-size: 0.75rem;
+    padding: 0.25rem 0;
+}
+.footer-wrapper ul li {
+    list-style-type: none;
+}
+.footer-wrapper { padding: 1rem 0; }
+.footer-wrapper h3 {
+    color: @font-color;
+    font-size: 1.3rem;
+}
+.footer-wrapper ul li a { 
+    color: @font-color;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: @transitionDuration;
+}
+.footer-wrapper ul li a:hover { color: @main-color; }
+
+.footer-wrapper img { height: 150px; }
+.footer-wrapper .social-link li { margin-bottom: 0.25rem; } 
+.footer-wrapper .social-link img { 
+    height: 30px;
+    margin-right: 0.5rem;
+}
+.footer-wrapper ul, .footer-wrapper li { 
+    padding: 0;
+    margin: 0;
+}
+.google-map-wrapper,
+.google-map-wrapper iframe { 
+    width: 100%;
+    height: 350px;
+}
 /******************************************************************************/
 
 /************************** Responsive media queries **************************/

@@ -1,6 +1,43 @@
 ==
+{% partial 'google-map' %}
 <footer>
-    <div class="page-wrapper">
-        This is footer
+    <div class="footer-wrapper">
+        <div class="page-wrapper clearfix">
+            <div class="float-left small-6 medium-3 desktop-left">
+                <h3>Meni</h3>
+                <ul>
+                    <li><a href="{{ 'index'|page }}">Početna</a></li>
+                    <li><a href="{{ 'about-us'|page }}">O nama</a></li>
+                    <li><a href="{{ 'services'|page }}">Usluge</a></li>
+                    <li><a href="{{ 'accupuncture'|page }}">Akupunktura</a></li>
+                    <li><a href="{{ 'pricing'|page }}">Cenovnik</a></li>
+                    <li><a href="{{ 'gallery'|page }}">Galerija</a></li>
+                    <li><a href="{{ 'contact'|page }}">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="float-left small-6 medium-3 footer-image-padding">
+                <a href="{{ 'index'|page }}">
+                    <img src="{{ 'assets/images/logo.png'|theme }}" alt="{{ companyName }}">
+                </a>
+            </div>
+            <div class="float-left small-6 medium-3 footer-image-padding">
+                <img src="{{ 'hippocrates-oath.jpg'|media }}" alt="Hipokratova zakletva">
+            </div>
+            <div class="float-left social-link small-6 medium-3 desktop-left">
+                <h3>Društvene mreže</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/lekarkragujevac/" target="_blank"><img src="{{ 'assets/images/icon-facebook.png'|theme }}">Ordinacija</a></li>
+                    <li><a href="https://www.facebook.com/akupunkturakg/" target="_blank"><img src="{{ 'assets/images/icon-facebook.png'|theme }}">Akupunktura</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-wrapper">
+        <div class="page-wrapper">
+            <div class="copyright">
+                Copyright &copy; {{ companyName }} {{ 'now'|date('Y') }}. Sva prava zadržana.
+            </div>
+            <div class="developer-by"></div>
+        </div>
     </div>
 </footer>

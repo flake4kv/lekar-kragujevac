@@ -1,33 +1,34 @@
 ==
 <header>
-    <section class="header-info-wrapper">
+    <div class="header-info-wrapper">
         <div class="page-wrapper">
             <ul class="inline-list header-info clearfix">
-                <li><a href=""><img src="{{ 'assets/images/icons/smartphone.png'|theme }}">Broj telefona</a></li>
-                <li><a href=""><img src="{{ 'assets/images/icons/address.png'|theme }}">Adresa</a></li>
-                <li><a class="icon-margin" href=""><img src="{{ 'assets/images/icons/clock.png'|theme }}">Radno vreme</a></li>
-                <li><a class="icon-margin" href=""><img src="{{ 'assets/images/icons/acupuncture.png'|theme }}">Akupunktura</a></li>
-                <li><a class="icon-margin" href=""><img src="{{ 'assets/images/icons/stethoscope.png'|theme }}">Ordinacija</a></li>
+                <li><a href="tel:+3810641963981"><img src="{{ 'assets/images/icons/smartphone.png'|theme }}">064/196-39-81</a></li>
+                <li><a href="https://www.google.com/maps/place/%D0%94%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B0+%D0%A1%D0%B8%D0%BC%D0%B8%D1%9B%D0%B0,+%D0%9A%D1%80%D0%B0%D0%B3%D1%83%D1%98%D0%B5%D0%B2%D0%B0%D1%86/@44.0187464,20.9108408,18.96z/data=!4m8!1m2!2m1!1zRHJhZ2FuYSBTaW1pY2EsINCa0YDQsNCz0YPRmNC10LLQsNGG!3m4!1s0x475721255a75d7b5:0x423a21ae73b58fe0!8m2!3d44.0188174!4d20.9106446?hl=sr" target="_blank"><img src="{{ 'assets/images/icons/address.png'|theme }}">Ugao Vojvode putnika i Dragana Simića, 34000 Kragujevac</a></li>
+                <li><a class="icon-margin" href=""><img src="{{ 'assets/images/icons/clock.png'|theme }}">24/7</a></li>
+                <li><a class="icon-margin" href="https://www.facebook.com/akupunkturakg/" target="_blank"><img src="{{ 'assets/images/icons/acupuncture.png'|theme }}">Akupunktura</a></li>
+                <li><a class="icon-margin" href="https://www.facebook.com/lekarkragujevac/" target="_blank"><img src="{{ 'assets/images/icons/stethoscope.png'|theme }}">Ordinacija</a></li>
             </ul>
         </div>
-    </section>
-    <section>
-        <div class="page-wrapper clearfix">
-            <div class="logo-wrapper">
-                <div class="logo">
-                    <a href="{{ 'index'|page }}"><img src="{{ 'assets/images/logo.png'|theme }}" alt="{{ companyName }}"></a>
-                </div>
-            </div>
-            <div class="navigation-wrapper">
-                <ul class="inline-list navigation clearfix">
-                    <li><a href="">Početna</a></li>
-                    <li><a href="">O nama</a></li>
-                    <li><a href="">Usluge</a></li>
-                    <li><a href="">Akupunktura</a></li>
-                    <li><a href="">Galerija</a></li>
-                    <li><a href="">Kontakt</a></li>
-                </ul>
+    </div>
+    <div class="page-wrapper clearfix">
+        <div class="logo-wrapper">
+            <div class="logo">
+                <a href="{{ 'index'|page }}"><img src="{{ 'assets/images/small-logo.png'|theme }}" alt="{{ companyName }}">
+                    <span>Dr Desanka Kovačević</span>
+                </a>
             </div>
         </div>
-    </section>
+        <div class="navigation-wrapper">
+            <ul class="inline-list navigation clearfix">
+                <li><a href="{{ 'index'|page }}"{% if this.page.id == 'index' %} class="active"{% endif %}>Početna</a></li>
+                <li><a href="{{ 'about-us'|page }}"{% if this.page.id == 'about-us' %} class="active"{% endif %}>O nama</a></li>
+                <li><a href="{{ 'services'|page }}"{% if this.page.id == 'services' %} class="active"{% endif %}>Usluge</a></li>
+                <li><a href="{{ 'accupuncture'|page }}"{% if this.page.id == 'accupuncture' %} class="active"{% endif %}>Akupunktura</a></li>
+                <li><a href="{{ 'pricing'|page }}"{% if this.page.id == 'pricing' %} class="active"{% endif %}>Cenovnik</a></li>
+                <li><a href="{{ 'gallery'|page }}"{% if this.page.id == 'gallery' %} class="active"{% endif %}>Galerija</a></li>
+                <li><a href="{{ 'contact'|page }}"{% if this.page.id == 'contact' %} class="active"{% endif %}>Kontakt</a></li>
+            </ul>
+        </div>
+    </div>
 </header>
